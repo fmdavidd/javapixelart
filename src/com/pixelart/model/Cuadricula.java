@@ -1,0 +1,75 @@
+package com.pixelart.model;
+
+import java.util.Objects;
+
+public class Cuadricula implements Comparable<Cuadricula> {
+    private int indiceX;
+    private int indiceY;
+    private String color;
+
+    public Cuadricula() {
+        this.indiceX = 0;
+        this.indiceY = 0;
+        this.color = "#FFFFFF";
+    }
+
+    public Cuadricula(int indiceX, int indiceY, String color) {
+        this.indiceX = indiceX;
+        this.indiceY = indiceY;
+        this.color = color;
+    }
+
+    public int getIndiceX() {
+        return indiceX;
+    }
+
+    public void setIndiceX(int indiceX) {
+        this.indiceX = indiceX;
+    }
+
+    public int getIndiceY() {
+        return indiceY;
+    }
+
+    public void setIndiceY(int indiceY) {
+        this.indiceY = indiceY;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cuadricula that = (Cuadricula) o;
+        return indiceX == that.indiceX && indiceY == that.indiceY;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(indiceX, indiceY);
+    }
+
+    @Override
+    public int compareTo(Cuadricula otra) {
+        if (this.indiceY != otra.indiceY) {
+            return Integer.compare(this.indiceY, otra.indiceY);
+        }
+        return Integer.compare(this.indiceX, otra.indiceX);
+    }
+
+    @Override
+    public String toString() {
+        return "Cuadricula{" +
+                "x=" + indiceX +
+                ", y=" + indiceY +
+                ", color='" + color + '\'' +
+                '}';
+    }
+}
